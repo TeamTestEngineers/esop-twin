@@ -1,0 +1,19 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: custom-namspace
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kubia-manaul2
+  namespace: custom-namspace
+spec:
+  containers:
+  - image: luksa/kubia
+    name: kubia
+    ports:
+    - containerPort: 8080
+      protocol: TCP
