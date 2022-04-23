@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: Job
+metadata: 
+  name: job2
+  namespace: prod
+spec:
+  template:
+    metadata: 
+      name: pod2
+    spec:
+      restartPolicy: Never
+      containers:
+      - image: luksa/batch-job
+        name: kubia
+        ports:
+        - containerPort: 8080
+          protocol: TCP

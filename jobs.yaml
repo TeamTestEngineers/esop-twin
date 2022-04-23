@@ -1,0 +1,18 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: job1
+  namespace: prod  
+spec:
+  template:
+    metadata:
+      labels: 
+        name: job1
+    spec:
+      containers:
+      - name: job1
+        image: luksa/batch-job
+        ports:
+        - containerPort: 80
+          protocol: TCP  
+      restartPolicy: OnFailure 

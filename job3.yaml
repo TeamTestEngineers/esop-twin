@@ -1,0 +1,19 @@
+apiVersion: batch/v1
+kind: Job
+metadata: 
+  name: job1
+  namespace: prod
+spec:
+  template:
+    metadata:
+      name: pod
+    spec:
+      containers: 
+      - image: luksa/batch-job
+        name: cont1
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+
+
+
