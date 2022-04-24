@@ -1,0 +1,21 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata: 
+  name: cj1
+  namespace: prod
+spec:
+  schedule: "10 18 * * sat"  
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          name: pod_cj1
+        spec:
+          containers:
+          - image: luksa/batch-job 
+            name: cont1
+            ports:
+            - containerPort: 8080
+              protocol: TCP
+          restartPolicy: OnFailure
+
