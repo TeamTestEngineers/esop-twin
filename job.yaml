@@ -1,0 +1,23 @@
+apiVersion: batch/v1
+kind : CronJob
+metadata:
+  name: jobs
+  namespace: prod
+spec:
+  schedule: "0,11,30,45 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          labels:
+            name: cj1
+        spec:
+          restartPolicy: OnFailure
+          containers:
+          - name: cj1
+            image: luksa/batch-job
+            ports:
+            - containerPort: 80
+              protocol: TCP        
+
+  

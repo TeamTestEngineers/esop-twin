@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata: 
+  name: deo
+  namespace: prod
+spec:
+  selector:
+    matchLabels:
+      name: kubia
+  template: 
+    metadata:
+      labels:
+        name: kubia
+    spec:
+      containers:
+      - name: kubiaa
+        image: luksa/kubia
+        ports:
+        - containerPort: 80
+          protocol : TCP    
