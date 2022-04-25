@@ -1,0 +1,36 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc2
+  namespace: prod
+spec:
+  selector:
+    name: rakesh
+  ports:
+  - port: 80
+    targetPort: 8080
+
+---
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata: 
+  name: rs2
+  namespace: prod
+spec:
+  replicas: 3
+  selector: 
+    matchLabels:
+      name: rakesh
+  template:
+    metadata:
+      labels:
+        name: rakesh
+    spec:
+      containers:
+      - image: luksa/kubia
+        name: kubia1
+        ports:
+        - containerPort: 80
+          protocol: TCP
+

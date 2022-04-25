@@ -1,0 +1,8 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata: 
+  name: cj1
+spec:
+  scheduler:  
+  template:
+wq
