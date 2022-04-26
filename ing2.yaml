@@ -8,13 +8,13 @@ spec:
   replicas: 3
   selector:
     matchLabels:
-      name: ngnix
+      name: nginx
   template:
     metadata:
       name: pods
       namespace: prod
       labels:
-        name: ngnix
+        name: nginx
     spec:
       containers:
       - image: luksa/kubia
@@ -33,13 +33,13 @@ spec:
   replicas: 3
   selector:
     matchLabels:
-      name: ngnix1
+      name: nginx1
   template:
     metadata:
       name: pods
       namespace: prod
       labels:
-        name: ngnix1
+        name: nginx1
     spec:
       containers:
       - image: luksa/kubia
