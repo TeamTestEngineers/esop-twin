@@ -1,0 +1,33 @@
+---
+apiVersion: v1
+kind: Service
+metadata: 
+  name: kubia
+  namespace: prod
+spec:
+  ports:
+  - port: 80 # this is service port
+    targetPort: 8080 # container port
+  selector:
+    app: kubia
+---
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata: 
+  name: rs1
+  namespace: prod
+spec:
+  replicas: 3
+  selector: 
+    matchLabels:
+      app: kubia
+  template:
+    metadata:
+      labels:
+        app: kubia
+    spec:
+      containers:
+      - image: luksa/kubia
+        name: kubia
+        
+

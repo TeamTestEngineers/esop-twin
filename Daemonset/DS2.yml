@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: ds2
+  namespace: prod
+spec:
+  selector:
+    matchLabels:
+      name: kubia4 
+  template:
+    metadata:
+      labels:
+        name: kubia4  
+    spec:
+      containers:
+      - name: kubia4
+        image: luksa/kubia
+        ports:
+        - containerPort: 80
+          protocol: TCP
