@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata: 
+  name: kubiars
+  namespace: prod
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      name: kubiars
+  template: 
+    metadata: 
+      labels: 
+        name: kubiars
+    spec:
+      containers:
+      - name: kubia12
+        image: luksa/kubia
+        ports:
+        - containerPort: 80
+          protocol: TCP      
