@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: fortune-blabla
+spec:
+  containers:
+  - image: numerouno51/fortune:env
+    name: fortune-blabla
+    envFrom:
+    - configMapRef:
+        name: myconfig
+

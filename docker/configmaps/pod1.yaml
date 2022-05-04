@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: fortunegame
+spec:
+  volumes:
+  - name: html
+    emptyDir: {}
+  containers:
+  - name: fortune
+    image: numerouno51/fortune:args
+    args: ["6"]   
+    name: html-generator
+    volumeMounts:
+    - name: html
+      mountPath: /var/htdocs
+    

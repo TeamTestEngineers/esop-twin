@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: fortuneimage-sleepint
+spec:
+  containers:
+  - image: numerouno51/fortune:env
+    name: fortuneimage
+    env:
+    - name: INTERVAL
+      valueFrom:
+        configMapKeyRef:
+          name: fortune-config
+          key: sleep-interval

@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: fortune-env
+spec:
+  volumes:
+  - name: html
+    emptyDir: {}
+  containers:
+  - name: html-generator
+    image: numerouno51/fortune:int
+    env:
+    - name: INTERVAL
+      value: "3"
+    volumeMounts:
+    - name: html
+      mountPath: /var/htdocs
+
