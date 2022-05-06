@@ -1,0 +1,44 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: maxsurge
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      blabla: blabla
+  template:
+    metadata:
+      name: kubia
+      labels:
+        blabla: blabla
+    spec:
+      containers:
+      - image: numerouno51/kubia:v1
+        name: kubia-v1
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dep-svc
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: 8080
+    nodePort: 30444
+  selector:
+    blabla: blabla
+
+
+      

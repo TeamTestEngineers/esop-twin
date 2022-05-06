@@ -1,0 +1,32 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: kubia
+spec:
+  replicas: 3
+  template: 
+    metadata:
+      name: kubia-v2
+      labels:
+        app: kubia
+    spec:
+      containers:
+      - image: numerouno51/kubia:v2
+        name: nodejs
+  selector:
+    matchLabels:
+      app: kubia
+---
+apiVersion: v1
+kind: Service
+metadata: 
+  name: kubia-svc
+spec:
+  type: NodePort
+  selector:
+    app: kubia
+  ports:
+  - port: 80
+    targetPort: 8080
+    nodePort: 30333
