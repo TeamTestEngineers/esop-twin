@@ -1,0 +1,28 @@
+---
+apiVersion: v1
+kind: ReplicationController
+metadata:
+    name: kubia-v1
+spec:
+  replicas: 3
+  template:
+    metadata:
+      name: kubia
+      labels:
+        app: kubia-v1
+    spec:
+      containers:
+      - image: numerouno51/kubia:v2
+        name: nodejs
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kubia
+spec:
+  type: LoadBalancer
+  selector:
+    app: kubia-v1
+  ports:
+  - port: 80
+    targetPort: 8080
