@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: fortune
+spec:
+  volumes:
+  - name: html
+    emptyDir: {}
+  containers: 
+  - name: fortunegame
+    image: suryasbg/v2
+    env:
+    - name: INTERVAL
+      value: "15"
+      name: html-generator
+    volumeMounts:
+    - name: html
+      mountPath: /var/htdocs   
