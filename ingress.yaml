@@ -1,0 +1,20 @@
+---
+apiVersion: networking.k8s.io/v1
+apiVersion: networking.k8s.io/v1
+kind: ingress
+metadata: 
+  name: Kubia
+  namespace: prod
+spec:
+  ingressClassName: nginx-example 
+  - host: haricloudsolutions.live
+    http:
+      path: /
+      pathType: prefix
+      backend:
+      
+apiVersion: apps/v1
+  ud container clusters get-credentials cluster-1 --zone us-central1-c --project secret-code-347109
+          name: kubia-lb
+metadata:
+
